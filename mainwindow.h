@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 class Untitled_lib1;
+class QQmlEngine;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,8 +19,11 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
+    QQmlEngine* getEngine() const;
+
 private:
     Ui::MainWindow* ui;
     Untitled_lib1* lib = nullptr;
+    QQmlEngine* engine = nullptr;
 };
 #endif // MAINWINDOW_H

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-//#include "untitled_lib1/untitled_lib1.h"
+#include <QQmlEngine>
 
 #include "untitled_lib1.h"
 
@@ -18,14 +18,22 @@ MainWindow::MainWindow(QWidget* parent)
     });
     lib = new Untitled_lib1;
     auto tempLib = lib;
-    connect(ui->pushButton, &QPushButton::clicked, this, [tempLib]() {
+    engine = ui->quickWidget->engine();
+    auto quick = ui->quickWidget;
+    connect(ui->pushButton, &QPushButton::clicked, this, [tempLib, quick]() {
         tempLib->test();
+        quick->setSource(QUrl("qrc:/inter/another.qml"));
     });
-    ui->quickWidget->setSource(QUrl("qrc:/qml/qml/test1.qml"));
+    ui->quickWidget->setSource(QUrl("qrc:/qml/test1.qml"));
 }
 
 MainWindow::~MainWindow()
 {
     delete lib;
     delete ui;
+}
+
+QQmlEngine* MainWindow::getEngine() const
+{
+    return engine;
 }

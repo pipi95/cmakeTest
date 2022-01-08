@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/inter">
+        <file alias="another.qml">qml/another.qml</file>
+    </qresource>
+</RCC>

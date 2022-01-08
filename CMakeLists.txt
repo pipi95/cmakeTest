@@ -28,6 +28,7 @@ set(PROJECT_SOURCES
         form.ui
         res_qml.qrc
         res_assets.qrc
+        res_internal.qrc
         )
 
 
